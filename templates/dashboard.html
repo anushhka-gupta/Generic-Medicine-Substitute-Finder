@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insights Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="strip-banner">
+        Insights Dashboard
+        <div class="subtitle">Market &amp; Pricing Analytics</div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+
+        <a href="{{ url_for('medicine.search') }}" class="btn btn-outline-secondary mb-4">&larr; Back to Search</a>
+
+        {% if not images %}
+            <div class="alert alert-warning">
+                No charts found yet. Run <code>python main.py</code> to generate the latest analytics charts,
+                then refresh this page.
+            </div>
+        {% else %}
+            <p class="text-muted mb-4">Showing charts from run: <strong>{{ run_folder }}</strong></p>
+
+            <div class="row g-4">
+                {% for image in images %}
+                    <div class="col-md-6">
+                        <div class="card chart-card strip-card shadow-sm">
+                            <img src="{{ url_for('medicine.dashboard_image', filename=image) }}"
+                                 class="card-img-top" alt="{{ image }}">
+                            <div class="card-body">
+                                <p class="mb-0">{{ image }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
