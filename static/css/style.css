@@ -1,0 +1,291 @@
+/* ============================================================
+   Medicine Substitute Finder — design system
+   Signature motif: blister-strip perforation (punched pill holes)
+   ============================================================ */
+
+:root {
+    --color-bg: #F6F8F5;
+    --color-surface: #FFFFFF;
+    --color-ink: #16241F;
+    --color-primary: #1F5745;
+    --color-primary-light: #2F7A63;
+    --color-gold: #D9A441;
+    --color-gold-dark: #B8842B;
+    --color-alert: #C1483D;
+    --color-muted: #6B7B74;
+    --color-border: #DCE5DD;
+
+    --font-display: 'Roboto Slab', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --radius: 10px;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Strip banner (replaces the pill-shaped header) ---------- */
+
+.strip-banner {
+    background-color: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-align: center;
+    padding: 1.1rem 1rem 1.6rem;
+    position: relative;
+    letter-spacing: 0.02em;
+}
+
+.strip-banner .subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #CFE3DA;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+}
+
+/* Perforation holes along the bottom edge of the banner */
+.strip-banner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: 14px;
+    background-image: radial-gradient(circle, var(--color-bg) 5px, transparent 5.5px);
+    background-size: 26px 14px;
+    background-repeat: repeat-x;
+    background-position: 13px 0;
+}
+
+/* ---------- Reusable perforation divider ---------- */
+
+.strip-divider {
+    height: 12px;
+    background-image: radial-gradient(circle, var(--color-border) 3.5px, transparent 4px);
+    background-size: 20px 12px;
+    background-repeat: repeat-x;
+    background-position: 10px 0;
+    margin: 1.5rem 0;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    border: none;
+    border-radius: var(--radius);
+    background-color: var(--color-surface);
+}
+
+.card.strip-card {
+    border-top: 3px dashed var(--color-border);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    font-family: var(--font-body);
+    font-weight: 600;
+    border-radius: var(--radius);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+}
+
+.btn-outline-secondary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* ---------- Search results as "strip pockets" ---------- */
+
+.list-group-item {
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius) !important;
+    margin-bottom: 0.6rem;
+    padding: 0.9rem 1.1rem;
+    position: relative;
+    padding-left: 2.4rem;
+}
+
+.list-group-item:hover {
+    background-color: #F0F6F2;
+    border-color: var(--color-primary-light) !important;
+}
+
+/* Pill bullet marker before each result */
+.list-group-item::before {
+    content: "";
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-primary-light);
+}
+
+/* ---------- Price / savings tag ---------- */
+
+.price-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    background-color: #FBF0DA;
+    color: var(--color-gold-dark);
+    border-left: 3px dashed var(--color-gold);
+    padding: 0.25rem 0.6rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+}
+
+.price-tag.savings {
+    background-color: #E9F5EE;
+    color: var(--color-primary);
+    border-left-color: var(--color-primary-light);
+}
+
+.price-tag.alert {
+    background-color: #FAEAE8;
+    color: var(--color-alert);
+    border-left-color: var(--color-alert);
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    font-family: var(--font-body);
+}
+
+.alert-success {
+    background-color: #E9F5EE;
+    color: var(--color-primary);
+    border-color: #C7E3D3;
+}
+
+.alert-danger {
+    background-color: #FAEAE8;
+    color: var(--color-alert);
+    border-color: #EFC9C4;
+}
+
+.alert-warning {
+    background-color: #FBF0DA;
+    color: var(--color-gold-dark);
+    border-color: #EFD9A8;
+}
+
+.alert-info {
+    background-color: #EDF3F6;
+    color: #3D6B7D;
+    border-color: #CFE0E7;
+}
+
+/* ---------- Tables ---------- */
+
+.table {
+    font-family: var(--font-body);
+}
+
+.table thead th {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    border-bottom: 2px solid var(--color-border);
+    font-weight: 600;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #F5F9F6;
+}
+
+/* ---------- Stat tiles on medicine_view.html ---------- */
+
+.stat-tile {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.9rem;
+    text-align: center;
+}
+
+.stat-tile .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+}
+
+.stat-tile .stat-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-top: 0.15rem;
+}
+
+/* ---------- Dashboard chart cards ---------- */
+
+.chart-card img {
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.chart-card .card-body p {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--color-muted);
+}
+
+/* ---------- Footer disclaimer ---------- */
+
+.disclaimer {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--color-muted);
+}
